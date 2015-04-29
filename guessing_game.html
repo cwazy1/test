@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Guess how many motha fuckn hours you been a'live?!</title>
+	</head>
+	<body>
+		<h1> I know you wanna know how long you been alive, right?!</h1>
+
+		<script>
+			alert("I know you wanna play dis game right?");
+			alert("this ai'nt yo 12 year old game. Dis fo adults only");
+			var age = prompt("how old you? in years, god damn it!");
+			var name = prompt("whats your name")
+			var weight = prompt("whats your weight in pounds")
+			var height = prompt('whats your height in inches')
+
+
+			var personalDetails = new Object()
+				personalDetails.name = name
+				personalDetails.age = age
+				personalDetails.weight = weight
+				personal.height = height
+				personal.summary = function () {
+					console.log(" your name is "+name+" and your age is "+age+" and your weight is "+weight+" and your height is "+height)
+				}
+
+			var calculatedHours = age*365*24
+			var calculatedWeight = weight*16
+			var calculatedHeight = height*2.54
+			
+				while (ageHourGuess != calculatedHours) {
+					var ageHourGuess = prompt("ok, now guess how many hours that is, math wiz!")
+					if (ageHourGuess > calculatedHours) {
+						alert("wrong, bitch! you guessed too high!")
+
+					}
+					else if (ageHourGuess < calculatedHours) {
+						alert("Wrong, bitch! you guessed too low!")
+					}
+					else if (ageHourGuess = calculatedHours){
+						alert("Finally you slow fuck, you got it right!")
+					}
+				}
+			alert("game over. on to the next one.")
+		</script>
+		<h2>You are <script> document.write(age)</script> years old</h2>
+		<p> congratz, you guessed right, you are <script>document.write(calculatedHours)</script> hours old </p>
+		<p>For all yo motha fuckn guessin' needs</p>
+	</body>
+</html>
