@@ -3,7 +3,19 @@
 	<head>
 		<title>How fat are you?!</title>
 	</head>
+	
 	<body>
+		<header>
+			Jason Bolun Du, who are you?
+		</header>
+		<section>
+			Who am I? I am awesome. period. I make people do work. I manage process. I oversee SDLC. that is who I am. 
+		</section>
+		<aside>
+			But before that, I was a biochem major pursuing a career in medicine. Obviously I decided not to go that route. 
+		</aside>
+
+		//this is where it gets into the ugly shit of calculating BMI
 		<h1>Are you fat? or are you skinny? that is the question!</h1>
 
 		<script>
@@ -14,19 +26,21 @@
 			var weight = prompt("whats your weight in pounds")
 			var height = prompt('whats your height in inches')
 
-
+			//keeping this so i can work with objects later	
 			/*var personalDetails = new Object()
 				personalDetails.name = name
 				personalDetails.age = age
 				personalDetails.weight = weight
 		
-
+			//eventually i want to work with this age dealio to make my game more complex
 			//var calculatedHours = age*365*24
 		personal.height = height
 				personal.summary = function () {
 					console.log(" your name is "+name+" and your age is "+age+" and your weight is "+weight+" and your height is "+height)
 				} */			//var calculatedWeight = weight*16
 			//var calculatedHeight = height*2.54
+
+			//here we are showing the function of guessHours
 			var guessHoursFn = function(weight,height) {
 				var calculatedBMI = Math.round((weight*703)/(height*height))
 				while (bmiGuess != calculatedBMI) {
@@ -43,7 +57,7 @@
 					}
 				}
 			}
-			
+
 			var abc = guessHoursFn(weight, height)
 			alert(abc)
 
@@ -51,6 +65,10 @@
 		</script>
 		
 		<p> congratz, you guessed right</p>
-		
+
+		<footer>
+			<p> contact me at 444444444</p>
+			<p> or reach me at 1234 bullshit street</p>
+		</footer>
 	</body>
 </html>
