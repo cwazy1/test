@@ -1,0 +1,38 @@
+<html>
+	<head>
+
+	</head>
+	<body>
+
+	</body>
+
+<script>
+var open = prompt("what time will your shop open in the morning?");
+var close = prompt("what time will your shop close in the afternoon");
+var hoursOpen = (12 - open)+(close);
+
+var place = function(l,m,n,a) {
+	this.local = l
+	this.min = m
+	this.max = n
+	this.avg = a
+	var customerPH = function() {
+		return Math.floor(Math.random()*(this.max - this.min))+this.min;
+	}
+	console.log("For the " +this.local + " location, you need to make: "+ (customerPH() * this.avg) + " donuts an hour")
+	var donutStorage = 0;
+	for (var i = 0; i < hoursOpen; i++) {
+		donutStorage += (Math.floor(Math.random()*(this.max - this.min))+this.min) * this.avg;
+	}
+	console.log("In the duration of a day for this same location, you'll need to bake: "+ donutStorage +" donuts");
+}
+
+place("downtown", 8, 43, 4.5);
+place("caphill", 4, 37, 2 )
+place('slu', 9, 23, 6.33)
+place('wedgewood', 2, 28, 1.25)
+place('ballard', 8, 58, 3.75)
+
+
+</script>
+</html>
