@@ -1,38 +1,114 @@
 <html>
 	<head>
-
+		HOW MANY MOTHER FUCKN DONUTS DO YOU NEED?!
 	</head>
 	<body>
+		<p>Say you own some DOUGH$NUT shops. WANNA KNOW HOW MANY NUTS YOU GOTTA BAKE, BITCH?</p>
+		<p> Here is a rough estimate of one scenario:</p>
+
+		<table>
+			<tr>
+				<th></th>
+				<th scope = "col">Location</th>
+				<th scope = "col">Donuts/Hour</th>
+				<th scope = "col">Donuts/Day</th>
+			</tr>
+			<tr>
+				<th scope = "row">Downtown</th>
+				<td>downtown</td>
+				<td>184</td>
+				<td>4036</td>
+
+			</tr>
+			<tr>
+				<th scope = "row">CapHill</th>
+				<td>capiton hill</td>
+				<td>72</td>
+				<td>1194</td>
+
+			</tr>
+			<tr>
+				<th scope = "row">SLU</th>
+				<td>south lake union</td>
+				<td>107</td>
+				<td>3272</td>
+
+			</tr>
+			<tr>
+				<th scope = "row">Wedgewood</th>
+				<td>wedgewood</td>
+				<td>16</td>
+				<td>561</td>
+
+			</tr>
+			<tr>
+				<th scope = "row">Ballard</th>
+				<td>ballard</td>
+				<td>52</td>
+				<td>4252</td>
+			</tr>
+
+		</table>
 
 	</body>
 
 <script>
 var open = prompt("what time will your shop open in the morning?");
-var close = prompt("what time will your shop close in the afternoon");
+var close = prompt("what time will your shop close in the afternoon?");
 var hoursOpen = (12 - open)+(close);
 
-var place = function(l,m,n,a) {
-	this.local = l
-	this.min = m
-	this.max = n
-	this.avg = a
-	var customerPH = function() {
-		return Math.floor(Math.random()*(this.max - this.min))+this.min;
-	}
-	console.log("For the " +this.local + " location, you need to make: "+ (customerPH() * this.avg) + " donuts an hour")
-	var donutStorage = 0;
-	for (var i = 0; i < hoursOpen; i++) {
-		donutStorage += (Math.floor(Math.random()*(this.max - this.min))+this.min) * this.avg;
-	}
-	console.log("In the duration of a day for this same location, you'll need to bake: "+ donutStorage +" donuts");
-}
+	function DonutMaster(){
 
-place("downtown", 8, 43, 4.5);
-place("caphill", 4, 37, 2 )
-place('slu', 9, 23, 6.33)
-place('wedgewood', 2, 28, 1.25)
-place('ballard', 8, 58, 3.75)
+		this.listOfShops = []
+		//this creates and pushes an entire instance of donutshop(l,m,n,a) into the array
+		this.addShop = function(l,m,n,a) {
+			var newShop = new donutShop(l,m,n,a)
+			this.listOfShops.push(newShop)
+		}
 
+		this.generateReport = function() {
+			for (var i = 0; i < this.listOfShops.length; i++){
+				console.log(this.listOfShops[i].franchiseLocation)
+				console.log("Avg donut production per hour at "+ this.listOfShops[i].franchiseLocation + " location, is: " + this.listOfShops[i].getDonutsPerHour())
+				console.log("Avg donut production per day at  " + this.listOfShops[i].franchiseLocation + " location, is: " + this.listOfShops[i].getDonutsPerDay())
+			}
+		}
+	}
+
+	//this is the class of donut shop which will be used by the addShop method to push into an array.
+	function donutShop(l,m,n,a) {
+		this.franchiseLocation = l
+		this.minCustomersPerHour = m
+		this.maxCustomersPerHour = n
+		this.avgDonutsPerCustomer = a
+
+		this.getCustomerPerHour = function() {
+			return Math.floor(Math.random()*(this.maxCustomersPerHour- this.minCustomersPerHour +1))+this.minCustomersPerHour
+		}
+
+		this.getDonutsPerHour = function() {
+			return Math.floor(this.getCustomerPerHour() * this.avgDonutsPerCustomer)
+		}
+
+		this.getDonutsPerDay = function() {
+			var donutsPerDay = 0;
+			for (var i = 0; i < hoursOpen; i++) {
+				donutsPerDay += this.getDonutsPerHour()
+			}
+			return (donutsPerDay)
+		}
+	}
+
+	//first we must create an instance of the donutmaster
+	var x = new DonutMaster()
+	//then we create multiple addShops to put new donutShops into the array
+	x.addShop( "Downtown" , 8, 43, 4.5);
+	x.addShop("caphill", 4, 37, 2 );
+	x.addShop('slu', 9, 23, 6.33)
+	x.addShop('wedgewood', 2, 28, 1.25)
+	x.addShop('ballard', 8, 58, 3.75)
+	//this finally runs the methods within the instances in the array to show the data we want.
+	x.generateReport()
 
 </script>
 </html>
